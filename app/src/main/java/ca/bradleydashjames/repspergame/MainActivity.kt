@@ -12,6 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import ca.bradleydashjames.repspergame.ui.theme.RepsPerGameTheme
 
+// following PLCodings guide to room and adapting it along the way https://www.youtube.com/watch?v=bOd3wO0uFr8
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
