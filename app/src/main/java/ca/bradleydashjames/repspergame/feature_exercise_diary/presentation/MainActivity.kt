@@ -1,4 +1,4 @@
-package ca.bradleydashjames.repspergame
+package ca.bradleydashjames.repspergame.feature_exercise_diary.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

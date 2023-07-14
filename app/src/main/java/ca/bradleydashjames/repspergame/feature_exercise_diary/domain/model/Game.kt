@@ -1,4 +1,4 @@
-package ca.bradleydashjames.repspergame.entities
+package ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model
 
 import androidx.room.Embedded
 import androidx.room.Entity

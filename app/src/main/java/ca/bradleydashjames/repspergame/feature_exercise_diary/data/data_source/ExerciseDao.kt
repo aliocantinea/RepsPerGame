@@ -1,16 +1,15 @@
-package ca.bradleydashjames.repspergame
+package ca.bradleydashjames.repspergame.feature_exercise_diary.data.data_source
 
 import androidx.room.Dao
 import androidx.room.Delete
-import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Upsert
-import ca.bradleydashjames.repspergame.entities.Exercise
-import ca.bradleydashjames.repspergame.entities.ExerciseSet
-import ca.bradleydashjames.repspergame.entities.Game
-import ca.bradleydashjames.repspergame.entities.relations.SetsMatchingExercise
-import ca.bradleydashjames.repspergame.entities.relations.SetsMatchingGame
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model.Exercise
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model.ExerciseSet
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model.Game
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model.relations.SetsMatchingExercise
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model.relations.SetsMatchingGame
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -38,18 +37,24 @@ interface ExercisesDao {
     @Delete
     suspend fun deleteGame(game: Game)
 
-    // Not sure if suspend should be added before these queries since they return a list, but will try it out
+    /*
+    Suspend should not be used for the following because they return a flow
+    source: https://youtu.be/8YPXv7xKh2w?t=1365
+    */
 
     // Queries
-    @Query("SELECT * FROM exerciseset ORDER BY date, time ASC")
+    @Query("SELECT * FROM exerciseset")
     // Using a Flow here will notify when changes occur within the database it is querying
-    suspend fun getHistoryOrderedByDateTime(): Flow<List<ExerciseSet>>
+    fun getSets(): Flow<List<ExerciseSet>>
+
+    @Query("SELECT * FROM exerciseset WHERE setId = :setId")
+    suspend fun getSetById(setId: Long): ExerciseSet?
 
     @Query("SELECT * FROM game ORDER BY gameName ASC")
-    suspend fun getGames(): Flow<List<Game>>
+    fun getGames(): Flow<List<Game>>
 
     @Query("SELECT * FROM exercise ORDER BY exerciseName ASC")
-    suspend fun getExercises(): Flow<List<Exercise>>
+    fun getExercises(): Flow<List<Exercise>>
 
     // One to Many Queries
     /*
@@ -59,12 +64,12 @@ interface ExercisesDao {
     */
     @Transaction
     @Query("SELECT * FROM exercise WHERE exerciseName = :exerciseName")
-    suspend fun getSetsMatchingExercise(exerciseName: String): Flow<List<SetsMatchingExercise>>
+    fun getSetsMatchingExercise(exerciseName: String): Flow<List<SetsMatchingExercise>>
     // I think this really highlights the readability of flipping the relationship entity name to "Child Matching Parent"
 
     @Transaction
     @Query("SELECT * FROM game WHERE gameName = :gameName")
-    suspend fun getSetsMatchingGame(gameName: String): Flow<List<SetsMatchingGame>>
+    fun getSetsMatchingGame(gameName: String): Flow<List<SetsMatchingGame>>
 }
 
 /*

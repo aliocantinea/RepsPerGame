@@ -1,9 +1,9 @@
-package ca.bradleydashjames.repspergame.entities.relations
+package ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model.relations
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import ca.bradleydashjames.repspergame.entities.ExerciseSet
-import ca.bradleydashjames.repspergame.entities.Game
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model.ExerciseSet
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model.Game
 
 /*
 I find this relationship confusing because the conventional naming strategy is GameWithSets (Parent With Children)
