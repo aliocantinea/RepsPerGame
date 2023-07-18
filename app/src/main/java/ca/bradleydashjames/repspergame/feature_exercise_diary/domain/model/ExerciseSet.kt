@@ -11,11 +11,12 @@ data class ExerciseSet(
     @PrimaryKey(autoGenerate = true) val setId: Long = 0, // could also make it val id: Int? = null, which would make it nullable
     val reps: Int,
     // LocalDateTime https://www.youtube.com/watch?v=gzHy6wKAJh8 added coreLibraryDesugaring to reduce SDK LocalDateTime needs
-    val date: LocalDate = LocalDate.now(),
-    val time: LocalTime = LocalTime.now(),
+    val timestamp: Long,
     val gameName: String,
     val exerciseName: String
 )
+
+class InvalidExerciseSetException(message: String): Exception(message)
 
 /*
 Sources:

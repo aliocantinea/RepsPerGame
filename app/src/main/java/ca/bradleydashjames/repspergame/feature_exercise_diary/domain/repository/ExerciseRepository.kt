@@ -18,7 +18,7 @@ interface ExerciseRepository {
     An interface is also used here so that fake versions of it can be created for testing so that an API call isn't actioned
     */
 
-    suspend fun upsertSet(exerciseSet: ExerciseSet)
+    suspend fun insertSet(exerciseSet: ExerciseSet)
 
     suspend fun deleteSet(exerciseSet: ExerciseSet)
 

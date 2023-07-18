@@ -5,9 +5,10 @@ import androidx.room.Room
 import ca.bradleydashjames.repspergame.feature_exercise_diary.data.data_source.ExerciseDatabase
 import ca.bradleydashjames.repspergame.feature_exercise_diary.data.repository.ExerciseRepositoryImplementation
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.repository.ExerciseRepository
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.AddSet
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.DeleteSet
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.ExerciseDiaryUseCases
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.GetSets
-import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.UpsertSet
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,7 +47,8 @@ object AppModule {
         return ExerciseDiaryUseCases(
             //This is what injects the use cases into the view-model
             getSets = GetSets(repository),
-            upsertSet = UpsertSet(repository)
+            addSet = AddSet(repository),
+            deleteSet = DeleteSet(repository)
         )
     }
 }

@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.Flow
 class ExerciseRepositoryImplementation(
     private val dao: ExercisesDao
 ) : ExerciseRepository {
-    override suspend fun upsertSet(exerciseSet: ExerciseSet) {
-        dao.upsertSet(exerciseSet)
+    override suspend fun insertSet(exerciseSet: ExerciseSet) {
+        dao.insertSet(exerciseSet)
     }
 
     override suspend fun deleteSet(exerciseSet: ExerciseSet) {

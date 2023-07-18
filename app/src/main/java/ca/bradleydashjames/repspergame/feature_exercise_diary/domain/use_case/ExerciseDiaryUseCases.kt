@@ -7,5 +7,6 @@ to make this more compact this file is used to keep track of all use cases in th
 
 data class ExerciseDiaryUseCases(
     val getSets: GetSets,
-    val upsertSet: UpsertSet
+    val addSet: AddSet,
+    val deleteSet: DeleteSet
 )

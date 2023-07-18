@@ -20,7 +20,7 @@ interface ExercisesDao {
     */
     // Change ExerciseSet to Upsert from Insert since a editable history would be good in case a mistake was logged
     @Upsert // Upsert handles insert(onConflict) by default
-    suspend fun upsertSet(exerciseSet: ExerciseSet)
+    suspend fun insertSet(exerciseSet: ExerciseSet)
 
     @Delete
     suspend fun deleteSet(exerciseSet: ExerciseSet)
