@@ -1,4 +1,4 @@
-package ca.bradleydashjames.repspergame.feature_exercise_diary.presentation.exercise_history.components
+package ca.bradleydashjames.repspergame.feature_exercise_diary.presentation.exercise_history
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -8,8 +8,6 @@ import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model.Exerc
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.ExerciseDiaryUseCases
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.utility.ExerciseOrder
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.utility.OrderType
-import ca.bradleydashjames.repspergame.feature_exercise_diary.presentation.exercise_history.ExerciseHistoryEvent
-import ca.bradleydashjames.repspergame.feature_exercise_diary.presentation.exercise_history.ExerciseHistoryState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
