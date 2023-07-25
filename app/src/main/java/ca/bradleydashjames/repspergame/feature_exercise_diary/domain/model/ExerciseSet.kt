@@ -13,7 +13,9 @@ data class ExerciseSet(
     // LocalDateTime https://www.youtube.com/watch?v=gzHy6wKAJh8 added coreLibraryDesugaring to reduce SDK LocalDateTime needs
     val timestamp: Long,
     val gameName: String,
-    val exerciseName: String
+    val gameIcon: String,
+    val exerciseName: String,
+    val exerciseColor: Int
 )
 
 class InvalidExerciseSetException(message: String): Exception(message)

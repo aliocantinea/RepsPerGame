@@ -9,6 +9,7 @@ data class Game(
     // Originally I had Primary key auto generating as Int but why not use user entered String and gameName since it will work with Upsert
     @PrimaryKey(autoGenerate = false)
     val gameName: String,
+    val icon: String,
     @Embedded
     val valueNames: Values
 )
