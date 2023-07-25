@@ -6,4 +6,11 @@
     <string name="reps">Reps</string>
     <string name="ascending">Ascending</string>
     <string name="descending">Descending</string>
+    <string name="exercise_history">Exercise History</string>
+    <string name="sort_menu">Sort Menu</string>
+    <string name="delete_set">Delete Set</string>
+    <string name="edit_set">Edit Set</string>
+    <string name="reps_of"> reps of </string>
+    <string name="set_deleted">Set Deleted</string>
+    <string name="undo">Undo</string>
 </resources>
