@@ -52,7 +52,9 @@ object AppModule {
             //This is what injects the use cases into the view-model
             getSets = GetSets(repository),
             addSet = AddSet(repository),
-            deleteSet = DeleteSet(repository)
+            deleteSet = DeleteSet(repository),
+            getGame = GetGame(repository),
+            getExercise = GetExercise(repository)
         )
     }
 }

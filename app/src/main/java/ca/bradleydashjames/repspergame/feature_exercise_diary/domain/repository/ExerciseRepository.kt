@@ -36,7 +36,11 @@ interface ExerciseRepository {
 
     fun getGames(): Flow<List<Game>>
 
+    suspend fun getGameByName(gameName: String): Game?
+
     fun getExercises(): Flow<List<Exercise>>
+
+    suspend fun getExerciseByName(exerciseName: String): Exercise?
 
     fun getSetsMatchingExercise(exerciseName: String): Flow<List<SetsMatchingExercise>>
 

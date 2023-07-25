@@ -53,8 +53,14 @@ interface ExercisesDao {
     @Query("SELECT * FROM game ORDER BY gameName ASC")
     fun getGames(): Flow<List<Game>>
 
+    @Query("SELECT * FROM game WHERE gameName = :gameName")
+    fun getGameByName(gameName: String): Game?
+
     @Query("SELECT * FROM exercise ORDER BY exerciseName ASC")
     fun getExercises(): Flow<List<Exercise>>
+
+    @Query("SELECT * FROM exercise WHERE exerciseName = :exerciseName")
+    fun getExerciseByName(exerciseName: String): Exercise?
 
     // One to Many Queries
     /*

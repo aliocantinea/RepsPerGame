@@ -48,8 +48,16 @@ class ExerciseRepositoryImplementation(
         return dao.getGames()
     }
 
+    override suspend fun getGameByName(gameName: String): Game? {
+        return dao.getGameByName(gameName)
+    }
+
     override fun getExercises(): Flow<List<Exercise>> {
         return dao.getExercises()
+    }
+
+    override suspend fun getExerciseByName(exerciseName: String): Exercise? {
+        return dao.getExerciseByName(exerciseName)
     }
 
     override fun getSetsMatchingExercise(exerciseName: String): Flow<List<SetsMatchingExercise>> {
