@@ -8,10 +8,13 @@ import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.repository.
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.AddSet
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.DeleteSet
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.ExerciseDiaryUseCases
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.GetExercise
+import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.GetGame
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.use_case.GetSets
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -43,6 +46,7 @@ object AppModule {
 
     @Provides
     @Singleton
+    @ViewModelScoped
     fun provideExerciseDiaryUseCases(repository: ExerciseRepository): ExerciseDiaryUseCases {
         return ExerciseDiaryUseCases(
             //This is what injects the use cases into the view-model

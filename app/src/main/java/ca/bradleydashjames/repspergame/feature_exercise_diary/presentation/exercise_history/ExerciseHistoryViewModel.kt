@@ -1,7 +1,9 @@
 package ca.bradleydashjames.repspergame.feature_exercise_diary.presentation.exercise_history
 
+import android.view.AbsSavedState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ca.bradleydashjames.repspergame.feature_exercise_diary.domain.model.ExerciseSet
@@ -17,11 +19,29 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ExerciseHistoryViewModel @Inject constructor(
+    /*
+    Ran into so many issues getting this to work, the reference video I am following uses an older
+    version of dagger-hilt and the documentation for it on android dev is confusing since I am still
+    trying to understand how all the pieces fit together. In the end an out of date dependency in
+    the gradle file was the issues but I still have to modify how saveStateHandle interacts with
+    the app and the di
+    */
+    /*
+    https://developersbreach.com/savedstatehandle-viewmodel-android/
+    savedStateHandle seems to be a way to pass saved variables from one screen to another.
+    if this is the case then why would I use a state data class in the presentation package?
+    */
+    //savedStateHandle: SavedStateHandle,
     private val exerciseDiaryUseCases: ExerciseDiaryUseCases
 ): ViewModel() {
 
+    /*
+    This seems to act the same as the savedStateHandle from above
+    passing a saved value from one component to another
+    */
     private val _state = mutableStateOf(ExerciseHistoryState())
     val state: State<ExerciseHistoryState> = _state
+
 
     // to keep track of the last deleted note this var is set when deleting and passed on restore snack bar
     private var recentlyDeletedExerciseSet: ExerciseSet? = null
@@ -80,6 +100,25 @@ class ExerciseHistoryViewModel @Inject constructor(
                     isOrderSectionVisible = !state.value.isOrderSectionVisible
                 )
             }
+            /*
+            I am not sure if this is the best way to pass in the toggle, I feel like state has to
+            be per item or all of the flow list items will toggle on at one time. I need to maybe
+            put a toggle true/false into the actual ExerciseItem component but I don't want the
+            business logic to be there so that it follows clean architecture principals
+
+            decided to include the remember state variable in the composable instead of here.
+            not sure if this really fits with teh clean architecture principals but it has to be a
+            local value or all items will change together when state is changed
+            https://developer.android.com/jetpack/compose/state
+            */
+            /*
+            is ExerciseHistoryEvent.ToggleExerciseItemInfo -> {
+            // should this use savedStateHandle and pass in the exerciseSet Id as the key?
+            _state.value = state.value.copy(
+            isExerciseItemInfoVisible = !state.value.isExerciseItemInfoVisible
+            )
+            }
+            */
         }
     }
 
